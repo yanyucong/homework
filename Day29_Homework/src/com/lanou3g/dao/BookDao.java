@@ -1,7 +1,9 @@
 package com.lanou3g.dao;
 
+import com.lanou3g.bean.Book;
 import com.lanou3g.util.JdbcUtil;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import java.sql.Connection;
@@ -12,15 +14,15 @@ import java.util.Map;
 public class BookDao {
     private QueryRunner qr = new QueryRunner();
 
-    public List<Map<String, Object>> query(){
+    public List<Book> query(){
         String sql = "select * from book";
         Connection conn = JdbcUtil.getConnection();
-    List<Map<String, Object>> maps = null;
+    List<Book> books = null;
         try {
-            maps = qr.query(conn, sql, new MapListHandler());
+            books = qr.query(conn, sql, new BeanListHandler<Book>(Book.class));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return maps;
+        return books;
     }
 }

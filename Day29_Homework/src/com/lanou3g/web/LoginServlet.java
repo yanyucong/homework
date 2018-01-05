@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -44,11 +43,12 @@ public class LoginServlet extends HttpServlet {
 						//存在哪儿，访问index时可以获取到
 						//存到ServletContext中
 						getServletContext().setAttribute("user",user);
-						request.getRequestDispatcher("/index.jsp").forward(request,response);
+//						request.getRequestDispatcher("/day299/index.jsp").forward(request,response);
 					String username = request.getParameter("username");
-					HttpSession session = request.getSession();
-					session.setAttribute("username",username);
-					response.sendRedirect("/index.jsp");
+//					HttpSession session = request.getSession();
+//					session.setAttribute("username",username);
+					response.sendRedirect("/day299/index.jsp");
+					getServletContext().setAttribute("username",username);
 
 					return;
 				}else {
