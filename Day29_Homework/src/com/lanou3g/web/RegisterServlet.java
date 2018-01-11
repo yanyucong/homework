@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
 			if(userDao.queryByUsername(
 					user.getUsername()
 			).getUsername() == null)
-
+				System.out.println(user.toString());
 			userDao.insert(user);
 
 			response.sendRedirect("/day29/login.html");

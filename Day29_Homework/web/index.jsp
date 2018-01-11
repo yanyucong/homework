@@ -50,7 +50,7 @@
     %>
     </table>
 
-  <a href="Login.jsp"><button>退出</button></a>
+  <a href="Login.jsp">${cookie.remove(username)}<button>退出</button></a>
 
   </body>
   <%--<script type="text/javascript">--%>
