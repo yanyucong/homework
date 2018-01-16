@@ -1,0 +1,55 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.dtd">
+<validators>
+    <field name="user.username">
+        <field-validator type="stringlength">
+            <param name="minLength">3</param>
+            <param name="maxLength">11</param>
+            <message>用户名长度3~11位</message>
+        </field-validator>
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>用户名不能为空</message>
+        </field-validator>
+    </field>
+
+    <field name="user.password">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>密码不能为空</message>
+        </field-validator>
+        <field-validator type="regex">
+            <param name="regex">[\dA-Za-z]{8,16}</param>
+            <message>密码由大小写字母加数字组成，长度在8到16位之间</message>
+        </field-validator>
+    </field>
+
+    <field name="re_password">
+        <field-validator type="fieldexpression">
+            <param name="expression"><![CDATA[re_password.equals(password)]]></param>
+            <message>两次输入的密码不一致</message>
+        </field-validator>
+    </field>
+
+    <field name="user.phone">
+        <field-validator type="regex">
+            <param name="regex">1[34578]\d{9}</param>
+            <message>手机号必须是以1开头，长度为11</message>
+        </field-validator>
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>手机号不能为空</message>
+        </field-validator>
+    </field>
+
+    <field name="user.email">
+        <field-validator type="email">
+            <message>邮箱不正确</message>
+        </field-validator>
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>邮箱不能为空</message>
+        </field-validator>
+    </field>
+</validators>
